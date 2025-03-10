@@ -1,0 +1,4 @@
+@EndUserText.label: 'Service Definition for Country'
+define service ZBTS_GIT_SD {
+  expose ZBTS_GIT_TEST;
+}

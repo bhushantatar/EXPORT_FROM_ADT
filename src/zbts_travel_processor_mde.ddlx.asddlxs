@@ -1,0 +1,108 @@
+@Metadata.layer: #PARTNER
+@UI.headerInfo: { typeName: 'BTTravel',
+                  typeNamePlural: 'BTTravels',
+                  title : { value: 'TravelId' },
+                  description : { value: 'Description' }
+                }
+annotate entity ZBTS_CDS_TRAVEL_PROCESSOR
+    with 
+{
+   @UI.facet: [ 
+   //First tab
+              { 
+                   purpose: #HEADER,
+                   type : #DATAPOINT_REFERENCE,
+                   label : 'BT_Flight Ticket Data',  //lable will not work in #HEADER
+                   position : 10,
+                   targetQualifier : 'QUAL1'                   
+                }  ,                      
+                 { 
+                   purpose: #HEADER,
+                   type : #DATAPOINT_REFERENCE,
+                   label : 'BT_Status Data',
+                   position : 20,
+                   targetQualifier : 'QUAL2'                   
+                } ,
+            {  
+            purpose: #STANDARD,
+            type: #COLLECTION,
+            label: 'BT More information',
+            id: 'super',
+            position: 10 
+     },
+     {
+            purpose: #STANDARD,
+            type: #IDENTIFICATION_REFERENCE,
+            label: 'BT More Info',
+            parentId: 'super',
+            position: 10
+     },
+     {
+            purpose: #STANDARD,
+            type: #FIELDGROUP_REFERENCE,
+            label: 'BT Date Info',
+            parentId: 'super',
+            position: 20,
+            targetQualifier: 'QUAL3' //BT - we can have multiple field group, but can have only IDENTIFICATION
+            
+     }  , 
+     
+     {
+            purpose: #STANDARD,
+            type: #FIELDGROUP_REFERENCE,
+            label: 'BT Price Info',
+            parentId: 'super',
+            position: 30,
+            targetQualifier: 'QUAL4' //BT - we can have multiple field group, but can have only IDENTIFICATION
+            
+     }  ,            
+          
+       //second tab
+          {
+            purpose: #STANDARD,
+            type: #LINEITEM_REFERENCE,
+            label: 'Bookings',
+            position: 20,
+            targetElement: '_Booking'
+          }
+                
+             ]
+
+   @UI.selectionField: [{ position : 10 }]
+   @UI.lineItem: [{ position : 10 }]
+   @UI.identification: [{ position : 20 }]
+    TravelId;
+  @UI.selectionField: [{ position : 20 }]  
+  @UI.lineItem: [{ position : 20 }]
+  @UI.identification: [{ position : 10 }]
+    CustomerId;
+  @UI.selectionField: [{ position : 30 }]    
+  @UI.lineItem: [{ position : 30 }]
+  @UI.identification: [{ position : 30 }]
+    AgencyId;
+    
+ @UI.lineItem: [{ position : 40 }]  
+   
+ @UI.fieldGroup: [{ qualifier: 'QUAL3', position : 10  , label : 'BT Shuruvat'}]   
+    BeginDate;
+ @UI.fieldGroup: [{ qualifier: 'QUAL3', position : 20 , label : ' BT Khatam' }]     
+   EndDate;
+ 
+ @UI.fieldGroup: [{ qualifier: 'QUAL4', position : 10  , label : 'BT BFee'}]   
+  BookingFee;
+ @UI.lineItem: [{ position : 50 }]    
+ @UI.dataPoint: { qualifier: 'QUAL1', title: 'BT_Total Price' }
+ @UI.fieldGroup: [{ qualifier: 'QUAL4', position : 20  , label : 'BT Tot price'}]  
+    TotalPrice;
+ 
+ @UI.fieldGroup: [{ qualifier: 'QUAL4', position : 30  , label : 'BT CoCurr'}]    
+ CurrencyCode;    
+  //  Description; 
+ @UI.lineItem: [{ position : 60 , criticality: 'Criticality'}]  
+ @UI.selectionField: [{ position : 40 }]      
+ @UI.dataPoint: { qualifier: 'QUAL2', title: 'BT_Status' , criticality: 'Criticality'}
+ @UI.fieldGroup: [{ qualifier: 'QUAL3', position : 30  , label : 'BT status'}]   
+    OverallStatus;
+
+    
+}

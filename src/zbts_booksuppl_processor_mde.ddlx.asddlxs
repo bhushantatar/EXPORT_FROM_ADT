@@ -1,0 +1,30 @@
+@Metadata.layer: #CORE
+
+@UI.headerInfo: { typeName: 'BTBookingSupplement',
+                  typeNamePlural: 'BTBookingsSupplements',
+                  title : { value: 'BookingSupplementId' },
+                  description : { value: 'Price' }
+                }
+annotate entity ZBTS_CDS_BOOKSUPPL_PROCESSOR
+    with 
+{
+ 
+//    TravelId;
+  //  BookingId;
+  @UI.lineItem: [{ position : 10  }]  
+    BookingSupplementId;
+  @UI.lineItem: [{ position : 20  }]    
+    SupplementId;
+  @UI.lineItem: [{ position : 30  }]      
+    Price;
+  @UI.lineItem: [{ position : 40  }]    
+    CurrencyCode;
+   
+  //  LastChangedAt;
+    /* Associations */
+    //_Booking;
+    //_Supplement;
+    //_SupplementText;
+    //_Travel;
+    
+}

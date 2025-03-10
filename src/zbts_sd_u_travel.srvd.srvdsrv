@@ -1,0 +1,8 @@
+@EndUserText.label: 'Service Definition for Travel Unmanaged'
+define service ZBTS_SD_U_TRAVEL {
+  expose ZBTS_CDS_U_TRAVEL       as Travel;
+  expose I_Currency              as Currency;
+  expose /DMO/I_Agency           as Agency;
+  expose /DMO/I_Customer         as Customer;
+  expose /DMO/I_Travel_Status_VH as TravelStatus;
+}
